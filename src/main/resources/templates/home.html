@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+
+<script th:src="@{webjars/jquery/3.2.1/jquery.js}"
+	type="text/javascript" charset="utf-8"></script>
+<script th:inline="javascript">
+
+</script>
+</head>
+<body>
+<!-- 引入thymeleaf-extras-springsecurity4依赖才显示用户名字 -->
+Logged user: <span sec:authentication="name">Bob</span><br/>
+Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+
+<ul sec:authorize="isAnonymous()" class="nav navbar-nav navbar-right">
+	<li><a th:href="@{/login}">Login</a></li>
+	<li><a th:href="@{/register}">Sign up</a></li>
+</ul>
+
+<ul sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right">
+	<li><a th:href="@{/logout}">Login Out</a></li>
+</ul>
+	<a th:href="@{/user_list}">用户列表</a>
+	<a th:href="@{/role_list}">角色列表</a>
+	<a th:href="@{/menu_list}">角色列表</a>
+	
+	
+<!-- 	<a th:href="@{/admin/list}">IP</a>
+	<a th:href="@{/onlyuser}">onlyuser</a>
+	<span sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER')">YES</span><br/>
+	<span sec:authorize="hasAuthority('ROLE_USER')">USER</span>
+	<a th:href="@{/test}">test</a>
+	<a th:href="@{/tolist}">testlist</a>
+	<a th:href="@{/test2}">test2</a> -->
+	
+</body>
+</html>
